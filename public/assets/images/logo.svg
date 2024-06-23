@@ -1,0 +1,12 @@
+<svg width="120" height="32" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      .cursive { font-family: 'Brush Script MT', cursive; font-size: 24px; font-weight: bold; }
+    </style>
+    <text x="10" y="30" class="cursive" fill="darkgoldenrod">
+      Dream Decor
+    </text>
+  </svg>
+  
+
+
+  
