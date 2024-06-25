@@ -1,11 +1,39 @@
+"use client";
 // import CategoryFilter from '@/components/shared/CategoryFilter';
 // import Collection from '@/components/shared/Collection'
 // import Search from '@/components/shared/Search';
 import { Button } from "@/components/ui/button";
 // import { getAllEvents } from '@/lib/actions/event.actions';
 // import { SearchParamProps } from '@/types';
+import React from "react";
+// import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import "./app.module.css";
 import Image from "next/image";
+import { MarqueeDemo } from "@/components/shared/MarqueeDemo";
+// import * as React from "react"
+import { InstapaperShareButton, InstagramIcon } from "next-share";
+// import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+// import { Input } from "@/components/ui/input";
+// import { Label } from "@/components/ui/label";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
 import Link from "next/link";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+
+// import { Description } from "@radix-ui/react-dialog";
 
 export default async function Home() {
   return (
@@ -18,14 +46,16 @@ export default async function Home() {
               Housewarming, Traditional Events, Birthdays, Baby Shower, Gender
               Reveal !!
             </p>
-            <Button
-              size="lg"
-              asChild
-              className="button w-full sm:w-fit"
-              style={{ backgroundColor: "darkgoldenrod", color: "white" }}
-            >
-              <Link href="#events">Book Now</Link>
-            </Button>
+            <SignedIn>
+              <Button
+                size="lg"
+                asChild
+                className="button w-full sm:w-fit"
+                style={{ backgroundColor: "darkgoldenrod", color: "white" }}
+              >
+                <Link href="#events">Book Now</Link>
+              </Button>
+            </SignedIn>
           </div>
 
           <Image
@@ -37,18 +67,110 @@ export default async function Home() {
           />
         </div>
       </section>
+      <SignedOut>
+        <section>
+          <MarqueeDemo />
+        </section>
+      </SignedOut>
 
       <section
         id="events"
         className="wrapper my-8 flex flex-col gap-8 md:gap-12"
       >
-        <h2 className="h2-bold">
-          Services Catalogue
-        </h2>
-
-        <div className="flex w-full flex-col gap-5 md:flex-row">
-          {/* <Search /> */}
-          {/* <CategoryFilter /> */}
+        <SignedIn>
+          <h2 className="h2-bold">Services Catalogue</h2>
+          <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+            <Card className="py-4 card">
+              <CardHeader>
+                <CardTitle>Housewarming</CardTitle>
+                <CardDescription>
+                  {/* <p>{item.description}</p> */}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Image
+                  src="/assets/images/HomeWarming.png"
+                  width={500}
+                  height={500}
+                  alt="Housewarming"
+                />
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <p>Price: 13$</p>
+                <Button>CheckOut</Button>
+              </CardFooter>
+            </Card>
+            <Card className="py-4 card">
+              <CardHeader>
+                <CardTitle>Traditional Events</CardTitle>
+                <CardDescription>
+                  {/* <p>{item.description}</p> */}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Image
+                  src="/assets/images/TraditionalEvents.png"
+                  width={500}
+                  height={500}
+                  alt="Traditional Events"
+                />
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <p>Price: 13$</p>
+                <Button>CheckOut</Button>
+              </CardFooter>
+            </Card>
+            <Card className="py-4 card">
+              <CardHeader>
+                <CardTitle>Baby Shower</CardTitle>
+                <CardDescription>
+                  {/* <p>{item.description}</p> */}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Image
+                  src="/assets/images/BabyShower.png"
+                  width={500}
+                  height={500}
+                  alt="Baby Shower & Gender Reveal"
+                />
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <p>Price: 13$</p>
+                <Button>CheckOut</Button>
+              </CardFooter>
+            </Card>
+            <Card className="py-4 card">
+              <CardHeader>
+                <CardTitle>Birthdays</CardTitle>
+                <CardDescription>
+                  {/* <p>{item.description}</p> */}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Image
+                  src="/assets/images/Birthday.png"
+                  width={500}
+                  height={500}
+                  alt="Birthdays"
+                />
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <p>Price: 13$</p>
+                <Button>CheckOut</Button>
+              </CardFooter>
+            </Card>
+          </div>
+        </SignedIn>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <h2 style={{ fontWeight: "bold", marginBottom: "20px" }}>
+            Connect with us
+          </h2>
+          <div style={{ display: "inline-block" }}>
+            <a href={"https://www.instagram.com/dream_decor_usa/"}>
+              <InstagramIcon size={32} round />
+            </a>
+          </div>
         </div>
 
         {/* <Collection

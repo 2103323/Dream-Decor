@@ -20,10 +20,10 @@ module.exports = withUt({
     extend: {
       colors: {
         primary: {
-          500: '#624CF5',
+          500: 'darkgoldenrod',
           50: ' #F6F8FD',
-          DEFAULT: '#624CF5',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'darkgoldenrod',
+          foreground: 'hsl(var(darkgoldenrod))',
         },
         coral: {
           500: '#15BF59',
@@ -79,6 +79,14 @@ module.exports = withUt({
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -91,6 +99,8 @@ module.exports = withUt({
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+         marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
     },
   },
