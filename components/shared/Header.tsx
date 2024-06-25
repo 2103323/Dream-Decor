@@ -18,8 +18,8 @@ const Header = () => {
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
           <Image
-            src="/assets/images/logo.svg"
-            width={128}
+            src="/assets/images/logo.ico"
+            width={80}
             height={38}
             alt="Dream Decor Logo"
           />

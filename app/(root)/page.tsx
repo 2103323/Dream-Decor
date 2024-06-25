@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 // import { SearchParamProps } from '@/types';
 import React from "react";
 // import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
-import "./app.module.css";
+// import "./app.module.css";
 import Image from "next/image";
 import { MarqueeDemo } from "@/components/shared/MarqueeDemo";
 // import * as React from "react"
@@ -32,6 +32,7 @@ import {
 // } from "@/components/ui/select";
 import Link from "next/link";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import CheckoutButton from "@/components/shared/CheckoutButton";
 
 // import { Description } from "@radix-ui/react-dialog";
 
@@ -79,8 +80,8 @@ export default async function Home() {
       >
         <SignedIn>
           <h2 className="h2-bold">Services Catalogue</h2>
-          <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-            <Card className="py-4 card">
+          <div className="gap-2 grid lg:grid-cols-4 sm:grid-cols-2">
+            <Card className="py-4">
               <CardHeader>
                 <CardTitle>Housewarming</CardTitle>
                 <CardDescription>
@@ -96,8 +97,8 @@ export default async function Home() {
                 />
               </CardContent>
               <CardFooter className="flex justify-between">
-                <p>Price: 13$</p>
-                <Button>CheckOut</Button>
+                <p>Consulting fee: 13$</p>
+                <CheckoutButton />
               </CardFooter>
             </Card>
             <Card className="py-4 card">
@@ -116,8 +117,8 @@ export default async function Home() {
                 />
               </CardContent>
               <CardFooter className="flex justify-between">
-                <p>Price: 13$</p>
-                <Button>CheckOut</Button>
+                <p>Consulting fee: 13$</p>
+                <CheckoutButton />
               </CardFooter>
             </Card>
             <Card className="py-4 card">
@@ -136,8 +137,8 @@ export default async function Home() {
                 />
               </CardContent>
               <CardFooter className="flex justify-between">
-                <p>Price: 13$</p>
-                <Button>CheckOut</Button>
+                <p>Consulting fee: 13$</p>
+                <CheckoutButton />
               </CardFooter>
             </Card>
             <Card className="py-4 card">
@@ -156,8 +157,8 @@ export default async function Home() {
                 />
               </CardContent>
               <CardFooter className="flex justify-between">
-                <p>Price: 13$</p>
-                <Button>CheckOut</Button>
+                <p>Consulting fee: 13$</p>
+                <CheckoutButton />
               </CardFooter>
             </Card>
           </div>
