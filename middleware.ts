@@ -1,21 +1,23 @@
-import { authMiddleware } from "@clerk/nextjs/server";
-export default authMiddleware({
-  // "/" will be accessible to all users
-  publicRoutes: ['/',
-    '/events/:id', // Assuming you want this route to be publicly accessible
-    '/api/webhook/clerk',
-    '/api/webhook/stripe',
-    '/api/uploadthing'],
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-  // Define routes to ignore from Clerk's authentication middleware
-  ignoredRoutes: [
+
+
+export default clerkMiddleware((auth, req) => {
+  const publicRoutes = createRouteMatcher([
+    '/',
+    '/events/:id',
     '/api/webhook/clerk',
     '/api/webhook/stripe',
     '/api/uploadthing'
-  ]
+  ]);
+  
+  const ignoredRoutes = createRouteMatcher([
+    '/api/webhook/clerk',
+    '/api/webhook/stripe',
+    '/api/uploadthing'
+  ]);
 });
 
 export const config = {
   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
-

@@ -15,14 +15,14 @@ export interface IOrder extends Document {
   }
 }
 
-export type IOrderItem = {
-  _id: string
-  totalAmount: string
-  createdAt: Date
-  eventTitle: string
-  eventId: string
-  buyer: string
-}
+// export type IOrderItem = {
+//   _id: string
+//   totalAmount: string
+//   createdAt: Date
+//   eventTitle: string
+//   eventId: string
+//   buyer: string
+// }
 
 const OrderSchema = new Schema({
   createdAt: {
@@ -37,10 +37,10 @@ const OrderSchema = new Schema({
   totalAmount: {
     type: String,
   },
-  event: {
-    type: Schema.Types.ObjectId,
-    ref: 'Event',
-  },
+  // event: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Event',
+  // },
   buyer: {
     type: Schema.Types.ObjectId,
     ref: 'User',
