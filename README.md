@@ -1,3 +1,5 @@
+![work-6](https://github.com/2103323/Dream-Decor/assets/98270897/d8f79575-7e56-4ca0-ac2b-d0f62620f86f)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
