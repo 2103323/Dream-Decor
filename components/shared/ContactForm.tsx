@@ -1,65 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { eventFormSchema } from "@/lib/validator";
-import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormDescription, FormField, FormItem,FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { eventFormSchema } from "@/lib/validator"
+import * as z from 'zod'
+import { eventDefaultValues } from "@/constants"
+import Dropdown from "./Dropdown"
 import { Textarea } from "@/components/ui/textarea"
-export default function ContactForm() {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState([]);
-  const [success, setSuccess] = useState(false);
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { IEvent } from "@/lib/database/models/event.model"
+import { createEvent } from "@/lib/actions/event.action";
+
+
+  type EventFormProps = {
+    userId: string
+    type: "Send"
+  }
+  const ContactForm = ({ userId, type }: EventFormProps) => {
+
+  const initialValues = eventDefaultValues;
+  // const router = useRouter()
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
-    // defaultValues: initialValues,
-  });
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    defaultValues: initialValues
+  })
 
-    console.log("Full name: ", fullname);
-    console.log("Email: ", email);
-    console.log("Message: ", message);
+  async function onSubmit(values: z.infer<typeof eventFormSchema>) {
+    if(type === 'Send') {
+      try {
+        const newEvent = await createEvent({
+          userId,
+          event: { ...values},
+        })
 
-    const res = await fetch("api/contact", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        fullname,
-        email,
-        message,
-      }),
-    });
-
-    const { msg, success } = await res.json();
-    setError(msg);
-    setSuccess(success);
-
-    if (success) {
-      setFullname("");
-      setEmail("");
-      setMessage("");
+        if(newEvent) {
+          form.reset();
+          
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
-  };
-
+    
+   
+  }
   return (
       <Form {...form} >
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5" >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5" >
           <div className="flex flex-col gap-5 md:flex-row">
             <FormField
               control={form.control}
@@ -71,6 +62,7 @@ export default function ContactForm() {
                       placeholder="Your Name"
                       {...field}
                       className="input-field"
+                      autoComplete="given-name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -87,6 +79,7 @@ export default function ContactForm() {
                       placeholder="Your Email"
                       {...field}
                       className="input-field"
+                      autoComplete="given-Email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -94,6 +87,20 @@ export default function ContactForm() {
               )}
             />
           </div>
+          {/* <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="categoryId"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Dropdown onChangeHandler={field.onChange} value={field.value} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          </div> */}
           <div className="flex flex-col gap-5 md:flex-row">
             <FormField
               control={form.control}
@@ -105,6 +112,7 @@ export default function ContactForm() {
                       placeholder="Description"
                       {...field}
                       className="textarea rounded-2xl"
+                      autoComplete="given-description"
                     />
                   </FormControl>
                   <FormMessage />
@@ -120,7 +128,10 @@ export default function ContactForm() {
         >
           {form.formState.isSubmitting ? (
             'Submitting...'
-          ): `Send`}</Button>
+          ): `${type}`}</Button>
         </form>
       </Form>
   )};
+
+
+export default ContactForm

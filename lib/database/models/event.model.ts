@@ -4,19 +4,16 @@ export interface IEvent extends Document {
     _id: string;
     name: string;
     email: string;
-    category:{_id:string,name:string}
     description: string;
-    
-  }
+}
 
-const ContactUs = new Schema({
+const ContactUsSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
-    category:{type:Schema.Types.ObjectId,ref:'Category'},
-    description: { type: String,required: true },
-    
-  })
+    description: { type: String, required: true },
+});
+
+// Use existing model if it's already been defined, otherwise create a new one
+const Event = models.ContactUs || model('ContactUs', ContactUsSchema);
   
-  const Event = models.Event || model('ContactUs', ContactUs);
-  
-  export default Event;
+export default Event;
