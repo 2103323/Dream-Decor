@@ -1,5 +1,21 @@
 ![work-6](https://github.com/2103323/Dream-Decor/assets/98270897/d8f79575-7e56-4ca0-ac2b-d0f62620f86f)
 
+<h1 align="center">Hi 👋, our Dream-decor website is here !!</h1>
+<h3 align="center">Made with love by Utsav & Suyash.</h3>
+
+- 🌱 Frame Work & Language used **Nextjs,Clerk,Emailjs,Typescript,Zod,Stripe,Tailwindcss,Mongodb**
+
+- 👨‍💻 WebSite Link [https://dream-decor.vercel.app/](https://dream-decor.vercel.app/)
+
+- 💬 Deployed on **Vercel**
+
+
+<p align="left">
+</p>
+
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nextjs.org/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a> </p>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
